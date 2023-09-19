@@ -1,5 +1,4 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -149,7 +148,7 @@ import {MenuService} from './app.menu.service';
 @NgModule({
     imports: [
         BrowserModule,
-        FormsModule,
+       
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
