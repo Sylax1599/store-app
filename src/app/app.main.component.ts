@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {MenuService} from './app.menu.service';
 import {PrimeNGConfig} from 'primeng/api';
 import {AppComponent} from './app.component';
@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 @Component({
     selector: 'app-main',
     templateUrl: './app.main.component.html',
+    encapsulation: ViewEncapsulation.None,
 })
 export class AppMainComponent {
 
