@@ -1,17 +1,8 @@
-<div class="layout-wrapper" (click)="onLayoutClick()"
-     [ngClass]="{'layout-static': isStatic(),
-                'layout-overlay': isOverlay(),
-                'layout-overlay-active': overlayMenuActive,
-                'layout-horizontal': isHorizontal(),
-                'layout-slim': isSlim(),
-                'layout-static-inactive': staticMenuDesktopInactive,
-                'layout-mobile-active': staticMenuMobileActive,
-                'layout-menu-dark':app.darkMenu,
-                'layout-menu-light':!app.darkMenu, 'p-input-filled': app.inputStyle === 'filled', 'p-ripple-disabled': !app.ripple}">
+<div class="layout-wrapper">
 
     <app-topbar></app-topbar>
 
-    <div class="layout-menu-container" (click)="onMenuClick($event)">
+    <div class="layout-menu-container">
         <div class="layout-menu-logo">
             <a href="#">
                 <img id="layout-menu-logo" src="assets/layout/images/logo-white.png" library="babylon-layout" />
@@ -19,7 +10,7 @@
         </div>
         <div class="layout-menu-wrapper">
             <div class="menu-scroll-content">
-                <app-inline-profile *ngIf="app.profileMode=='inline'&&!isHorizontal()"></app-inline-profile>
+             
                 <app-menu></app-menu>
             </div>
         </div>
@@ -34,9 +25,6 @@
 
         <app-footer></app-footer>
     </div>
-
-    <app-config></app-config>
-
     <div class="layout-mask"></div>
 
 </div>

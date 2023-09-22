@@ -34,7 +34,7 @@ export class AppProfileComponent {
     constructor(public appMain: AppMainComponent) { }
 
     onClick(event) {
-        this.appMain.onInlineMenuClick(event);
+        
         event.preventDefault();
     }
 }

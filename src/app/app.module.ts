@@ -24,26 +24,6 @@ import {AppFooterComponent} from './app.footer.component';
 // Demo pages
 import {AppCodeModule} from './app.code.component';
 
-import {IconsComponent} from './utilities/icons.component';
-import {AppCrudComponent} from './pages/app.crud.component';
-import {AppCalendarComponent} from './pages/app.calendar.component';
-import {AppTimelineDemoComponent} from './pages/app.timelinedemo.component';
-import {AppInvoiceComponent} from './pages/app.invoice.component';
-import {AppHelpComponent} from './pages/app.help.component';
-import {AppNotfoundComponent} from './pages/app.notfound.component';
-import {AppErrorComponent} from './pages/app.error.component';
-import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
-import {AppLoginComponent} from './pages/app.login.component';
-import {AppWizardComponent} from './pages/app.wizard.component';
-
-// Demo services
-import {CountryService} from './demo/service/countryservice';
-import {CustomerService} from './demo/service/customerservice';
-import {EventService} from './demo/service/eventservice';
-import {IconService} from './demo/service/iconservice';
-import {NodeService} from './demo/service/nodeservice';
-import {PhotoService} from './demo/service/photoservice';
-import {ProductService} from './demo/service/productservice';
 // Application services
 import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
@@ -80,22 +60,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         AppFooterComponent,
         AppConfigComponent,
         AppBreadcrumbComponent,
-        IconsComponent,
-        AppCrudComponent,
-        AppCalendarComponent,
-        AppTimelineDemoComponent,
-        AppLoginComponent,
-        AppInvoiceComponent,
-        AppHelpComponent,
-        AppNotfoundComponent,
-        AppErrorComponent,
-        AppAccessdeniedComponent,
-        AppWizardComponent,
     ],
     providers: [
-        {provide: LocationStrategy, useClass: HashLocationStrategy},
-        CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, BreadcrumbService
+        {provide: LocationStrategy, useClass: HashLocationStrategy}, MenuService, BreadcrumbService
     ],
     bootstrap: [AppComponent]
 })

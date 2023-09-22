@@ -8,7 +8,7 @@ import {AppMainComponent} from './app.main.component';
         <a style="cursor: pointer" id="layout-config-button" class="layout-config-button" (click)="onConfigButtonClick($event)">
             <i class="pi pi-cog"></i>
         </a>
-        <div class="layout-config" [ngClass]="{'layout-config-active': appMain.configActive}" (click)="appMain.onConfigClick($event)">
+        <div class="layout-config">
             <h5>Menu Mode</h5>
             <div class="field-radiobutton">
                 <p-radioButton name="menuMode" value="static" [(ngModel)]="app.layoutMode" inputId="mode1"></p-radioButton>
@@ -39,11 +39,11 @@ import {AppMainComponent} from './app.main.component';
 
             <h5>User Profile</h5>
             <div class="field-radiobutton">
-                <p-radioButton name="profileMode" value="inline" [(ngModel)]="app.profileMode" [disabled]="appMain.isHorizontal()" inputId="profileMode1"></p-radioButton>
+                <p-radioButton name="profileMode" value="inline" [(ngModel)]="app.profileMode"  inputId="profileMode1"></p-radioButton>
                 <label for="profileMode1">Inline</label>
             </div>
             <div class="field-radiobutton">
-                <p-radioButton name="profileMode" value="popup" [(ngModel)]="app.profileMode" [disabled]="appMain.isHorizontal()" inputId="profileMode2"></p-radioButton>
+                <p-radioButton name="profileMode" value="popup" [(ngModel)]="app.profileMode"  inputId="profileMode2"></p-radioButton>
                 <label for="profileMode2">Popup</label>
             </div>
 
@@ -58,7 +58,7 @@ import {AppMainComponent} from './app.main.component';
             </div>
 
             <h5>Ripple Effect</h5>
-            <p-inputSwitch [ngModel]="app.ripple" (onChange)="appMain.onRippleChange($event)"></p-inputSwitch>
+            <p-inputSwitch [ngModel]="app.ripple"></p-inputSwitch>
 
             <h5>Themes</h5>
             <div class="layout-themes">
@@ -151,8 +151,7 @@ export class AppConfigComponent implements OnInit {
     }
 
     onConfigButtonClick(event) {
-        this.appMain.configActive = !this.appMain.configActive;
-        this.appMain.configClick = true;
+        
         event.preventDefault();
     }
 }

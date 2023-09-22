@@ -14,14 +14,10 @@ export class AppBreadcrumbComponent implements OnDestroy {
     items: MenuItem[];
 
     constructor(public breadcrumbService: BreadcrumbService) {
-        this.subscription = breadcrumbService.itemsHandler.subscribe(response => {
-            this.items = response;
-        });
+       
     }
 
     ngOnDestroy() {
-        if (this.subscription) {
-            this.subscription.unsubscribe();
-        }
+        
     }
 }

@@ -12,36 +12,7 @@ import { AppMainComponent } from './app.main.component';
     /* tslint:enable:component-selector */
     template: `
         <ng-container>
-            <div *ngIf="root && item.visible !== false">
-                <span class="layout-menuitem-text">{{item.label}}</span>
-            </div>
-            <a [attr.href]="item.url" (click)="itemClick($event)" *ngIf="(!item.routerLink || item.items) && item.visible !== false"
-               (mouseenter)="onMouseEnter()" (keydown.enter)="itemClick($event)" [ngClass]="item.class" pRipple
-               [attr.target]="item.target" [attr.tabindex]="!visible ? '-1' : 0">
-                <i class="layout-menuitem-icon" [ngClass]="item.icon"></i>
-                <span class="layout-menuitem-text">{{item.label}}</span>
-                <i class="pi pi-fw pi-angle-down layout-submenu-toggler" *ngIf="item.items"></i>
-                <span class="menuitem-badge" *ngIf="item.badge">{{item.badge}}</span>
-            </a>
-            <a (click)="itemClick($event)" (mouseenter)="onMouseEnter()" *ngIf="(item.routerLink && !item.items) && item.visible !== false"
-               [routerLink]="item.routerLink" routerLinkActive="active-route" [ngClass]="item.class" pRipple
-               [routerLinkActiveOptions]="{exact: !item.preventExact}" [attr.target]="item.target" [attr.tabindex]="!visible ? '-1' : 0">
-                <i class="layout-menuitem-icon" [ngClass]="item.icon"></i>
-                <span class="layout-menuitem-text">{{item.label}}</span>
-                <i class="pi pi-fw pi-angle-down layout-submenu-toggler" *ngIf="item.items"></i>
-                <span class="menuitem-badge" *ngIf="item.badge">{{item.badge}}</span>
-            </a>
-            <div class="layout-menu-tooltip" *ngIf="item.visible !== false">
-                <div class="layout-menu-tooltip-arrow"></div>
-                <div class="layout-menu-tooltip-text">{{item.label}}</div>
-            </div>
-            <ul *ngIf="(item.items || (active || animating)) && item.visible !== false" (@children.done)="onAnimationDone()"
-                [@children]="(root ? 'visible' : active ? 'visibleAnimated' : 'hiddenAnimated')">
-                <ng-template ngFor let-child let-i="index" [ngForOf]="item.items">
-                    <li app-menuitem *ngIf="child.visible!==false" [item]="child" [visible]="active"
-                        [index]="i" [parentKey]="key" [class]="child.badgeClass"></li>
-                </ng-template>
-            </ul>
+            
         </ng-container>
     `,
     host: {
@@ -108,24 +79,11 @@ export class AppMenuitemComponent implements OnInit, OnDestroy {
             this.active = false;
         });
 
-        this.router.events.pipe(filter(event => event instanceof NavigationEnd))
-            .subscribe(params => {
-                if (this.appMain.isHorizontal()) {
-                    this.active = false;
-                } else {
-                    if (this.item.routerLink) {
-                        this.updateActiveStateFromRoute();
-                    } else {
-                        this.active = false;
-                    }
-                }
-            });
+       
     }
 
     ngOnInit() {
-        if (!this.appMain.isHorizontal() && this.item.routerLink) {
-            this.updateActiveStateFromRoute();
-        }
+        
 
         this.key = this.parentKey ? this.parentKey + '-' + this.index : String(this.index);
     }
@@ -141,10 +99,7 @@ export class AppMenuitemComponent implements OnInit, OnDestroy {
             return;
         }
 
-        // navigate with hover in horizontal mode
-        if (this.root) {
-            this.appMain.menuHoverActive = !this.appMain.menuHoverActive;
-        }
+        
 
         // notify other items
         this.menuService.onMenuStateChange(this.key);
@@ -163,24 +118,12 @@ export class AppMenuitemComponent implements OnInit, OnDestroy {
             this.active = true;
 
             // hide overlay menus
-            this.appMain.overlayMenuActive = false;
-            this.appMain.staticMenuMobileActive = false;
-            this.appMain.menuHoverActive = !this.appMain.menuHoverActive;
-
-            // reset horizontal menu
-            if (this.appMain.isHorizontal() || this.appMain.isSlim()) {
-                this.menuService.reset();
-            }
+           
         }
     }
 
     onMouseEnter() {
-        // activate item on hover
-        if (this.root && this.appMain.menuHoverActive &&
-            (this.appMain.isHorizontal() || this.appMain.isSlim()) && this.appMain.isDesktop()) {
-            this.menuService.onMenuStateChange(this.key);
-            this.active = true;
-        }
+        
     }
 
     onAnimationDone() {
