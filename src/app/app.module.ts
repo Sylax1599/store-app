@@ -12,21 +12,13 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 // Application Components
 import {AppComponent} from './app.component';
 import {AppMainComponent} from './app.main.component';
-import {AppMenuComponent} from './app.menu.component';
-import {AppMenuitemComponent} from './app.menuitem.component';
-import {AppProfileComponent} from './app.profile.component';
 import {AppBreadcrumbComponent} from './app.breadcrumb.component';
-import {AppConfigComponent} from './app.config.component';
 import {AppTopBarComponent} from './app.topbar.component';
 import {AppFooterComponent} from './app.footer.component';
 
 
-// Demo pages
-import {AppCodeModule} from './app.code.component';
-
 // Application services
 import {BreadcrumbService} from './app.breadcrumb.service';
-import {MenuService} from './app.menu.service';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 
@@ -41,7 +33,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         AppRoutingModule,
         SharedModule,
         CoreModule,
-        AppCodeModule,
         TranslateModule.forRoot({
             loader: {
               provide: TranslateLoader,
@@ -53,16 +44,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     declarations: [
         AppComponent,
         AppMainComponent,
-        AppMenuComponent,
-        AppMenuitemComponent,
-        AppProfileComponent,
         AppTopBarComponent,
         AppFooterComponent,
-        AppConfigComponent,
         AppBreadcrumbComponent,
     ],
     providers: [
-        {provide: LocationStrategy, useClass: HashLocationStrategy}, MenuService, BreadcrumbService
+        {provide: LocationStrategy, useClass: HashLocationStrategy}, BreadcrumbService
     ],
     bootstrap: [AppComponent]
 })
