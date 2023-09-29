@@ -1,7 +1,8 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/app/enviroments/environment.dev';
+
 import { AuthenticateService } from 'src/app/modules/auth/services/authenticate.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'any',
